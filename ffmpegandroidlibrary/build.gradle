@@ -1,0 +1,134 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+
+
+
+
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "26.0.0"
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        ndk {
+            abiFilters "armeabi-v7a"
+        }
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets.main {
+        jniLibs.srcDir 'src/main/libs'
+        jni.srcDirs = ["jni"] //disable automatic ndk-build call
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    implementation 'com.android.support:appcompat-v7:25.4.0'
+    testImplementation 'junit:junit:4.12'
+}
+
+
+
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+group = 'com.madhavanmalolan.android'
+version = '0.0.3'
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            name 'ffmpegandroidlibrary'
+            description 'Full functionality FFMPEG library for android'
+            url 'https://github.com/madhavanmalolan/ffmpegandroidlibrary'
+            inceptionYear '2017'
+
+            packaging 'aar'
+            groupId 'com.madhavanmalolan.android'
+            artifactId 'ffmpegandroidlibrary'
+            version '0.1.1'
+
+            licenses {
+                license {
+                    name 'The MIT License (MIT)'
+                    url 'https://opensource.org/licenses/MIT'
+                }
+            }
+            scm {
+                connection 'https://github.com/madhavanmalolan/ffmpegandroidlibrary.git'
+                url 'https://github.com/madhavanmalolan/ffmpegandroidlibrary'
+
+            }
+            developers {
+                developer {
+                    id = 'madhavanmalolan'
+                    name 'Madhavan Malolan'
+                }
+            }
+        }
+    }
+}
+
+Properties bintrayProperties = new Properties()
+bintrayProperties.load(project.rootProject.file('bintray.properties').newDataInputStream())
+
+bintray {
+    user = bintrayProperties.getProperty('user')
+    key = bintrayProperties.get('key')
+    configurations = ['archives']
+    pkg {
+        repo = 'android'
+        name = 'ffmpegandroidlibrary'
+        userOrg = 'madhavanmalolan'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/madhavanmalolan/ffmpegandroidlibrary.git'
+        publish = true
+        version {
+            name = '0.0.3'
+            desc = 'FFMPEG for Android'
+            released = new Date()
+            vcsTag = 'v0.0.3'
+        }
+    }
+}
