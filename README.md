@@ -3,22 +3,12 @@
 
 ## Gradle Build
 
-Project level build.gradle
-
-```
-allprojects {
-	repositories {
-		...
-		maven { url 'http://dl.bintray.com/madhavanmalolan/android' }
-	}
-}
-
-```
+The library is available on `jcenter()`
 
 App level build.gradle
 
 ```
-    compile 'com.madhavanmalolan.android:ffmpegandroidlibrary:0.0.3'
+    compile 'com.madhavanmalolan.android:ffmpegandroidlibrary:0.0.4'
 
 ```
 ## Usage
