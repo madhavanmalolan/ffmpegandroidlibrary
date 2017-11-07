@@ -40,6 +40,9 @@ The equivalent Java code for the same would be
 ## Contribute
 Feel free to modify this (overly simple) library to suit your needs. PRs accepted!
 
+## Manual compilation
+This library contains the most codecs pre compiled. However, if it doesn't suit your needs you can recompile the libraries manually. [Here is a guide on how to do it](https://medium.com/madhavanmalolan/ffmpeg-for-android-b307f2613c82 "Madhavan Malolan Blog") (Exactly what was used for generating the shared libraries in this project). 
+
 
 ## License
 This project is bound by the MIT license. Feel free to use it and not tell others about it! Please be nice, and do tell others though :)
