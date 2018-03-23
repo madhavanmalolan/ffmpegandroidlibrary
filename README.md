@@ -36,7 +36,7 @@ The equivalent Java code for the same would be
 	"output_file.mp4"
     });
 ```
-##Success stories
+## Success stories
 Using this library? Tell us how it helped you and check out how it helped others [here](https://github.com/madhavanmalolan/ffmpegandroidlibrary/wiki/Success-stories)
 
 ## Contribute
