@@ -36,12 +36,14 @@ The equivalent Java code for the same would be
 	"output_file.mp4"
     });
 ```
+##Success stories
+Using this library? Tell us how it helped you and check out how it helped others [here](https://github.com/madhavanmalolan/ffmpegandroidlibrary/wiki/Success-stories)
 
 ## Contribute
 Feel free to modify this (overly simple) library to suit your needs. PRs accepted!
 
 ## Manual compilation
-This library contains the most codecs pre compiled. However, if it doesn't suit your needs you can recompile the libraries manually. [Here is a guide on how to do it](https://medium.com/madhavanmalolan/ffmpeg-for-android-b307f2613c82 "Madhavan Malolan Blog") (Exactly what was used for generating the shared libraries in this project). 
+This library contains the most codecs pre compiled. However, if it doesn't suit your needs you can recompile the libraries manually. [Here is a guide on how to do it](https://github.com/madhavanmalolan/ffmpegandroidlibrary/wiki) (Exactly what was used for generating the shared libraries in this project). 
 
 
 ## License
